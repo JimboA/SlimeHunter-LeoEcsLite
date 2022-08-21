@@ -26,9 +26,6 @@ namespace Client.Input
         {
             _controls = new InputControls();
             _controls.Enable();
-#if UNITY_EDITOR
-            TouchSimulation.Enable();
-#endif
             _touchPosAction = _controls.Battle.TouchPosition;
             _controls.Battle.TouchPressed.started += TouchStarted;
             _controls.Battle.TouchPressed.canceled += TouchCanceled;
