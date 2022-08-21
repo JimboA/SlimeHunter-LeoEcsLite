@@ -1,5 +1,5 @@
 # SlimeHunter-LeoEcsLite
-Turn-based tactical game with match-line mechanics. Created with LeoEcsLite.
+Turn-based tactical game with match-line mechanics. Created with [LeoECS Lite](https://github.com/Leopotam/ecslite).
 
 Main reference game - Grindstone
 
