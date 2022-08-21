@@ -1,0 +1,8 @@
+using Client.AppData;
+
+namespace #NS#
+{
+    public sealed class #SCRIPTNAME#SOProvider : ComponentProvider<#SCRIPTNAME#>
+    {
+    }
+}

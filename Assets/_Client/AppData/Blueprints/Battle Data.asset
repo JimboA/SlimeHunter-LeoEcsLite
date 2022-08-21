@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4238485db775d4a8780bf5365668ff, type: 3}
+  m_Name: Battle Data
+  m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 11400000, guid: b70b74dc4bf781946bcafb9d5cf0507d, type: 2}
+  currentLevelId: 0
+  characters:
+  - {fileID: 11400000, guid: 1d5869a69ee269f45a61da2d1fb25bd4, type: 2}
+  - {fileID: 11400000, guid: a1efa076f2894f7439472d86b04b9499, type: 2}
+  - {fileID: 11400000, guid: a1b975038fb8cdf4a843d2ff6a86bcbf, type: 2}
