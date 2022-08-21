@@ -13,7 +13,7 @@ namespace Client.Battle.Simulation
             {
                 ref var pools = ref _actors.Pools;
 
-                ref Turn                 turn  = ref pools.Inc1.Get(entity);
+                ref Turn        turn  = ref pools.Inc1.Get(entity);
                 ref AttackPower power = ref pools.Inc2.Get(entity);
 
                 if (turn.Phase == StatePhase.OnStart
