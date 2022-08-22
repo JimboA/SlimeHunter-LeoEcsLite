@@ -21,11 +21,12 @@ namespace Client.Battle.Simulation
         public int this[int column, int row] { get; }
         public void SetEntityInCell(int index, int entity);
         public void SetEntityInCell(int2 pos, int entity);
-        public void ReleaseCell(int2 pos);
-        public void SwapTargets(int2 pos1, int2 pos2);
-        public void SwapCells(int2 pos1, int2 pos2);
         public ref Cell GetCellDataFromIndex(int index);
         public ref Cell GetCellDataFromPosition(int2 pos);
+        public void ReleaseCell(int2 pos);
+        public void ReleaseCell(int index);
+        public void SwapTargets(int2 pos1, int2 pos2);
+        public void SwapCells(int2 pos1, int2 pos2);
         public bool TryGetTarget(int2 pos, out int targetEntity);
         public bool CheckBounds(int2 pos);
     }
@@ -101,9 +102,24 @@ namespace Client.Battle.Simulation
             SetEntity(cell, entity);
         }
 
+        public ref Cell GetCellDataFromIndex(int index)
+        {
+            return ref _cellsPool.Get(_cells[index]);
+        }
+
+        public ref Cell GetCellDataFromPosition(int2 pos)
+        {
+            return ref _cellsPool.Get(this[pos.x, pos.y]);
+        }
+
         public void ReleaseCell(int2 pos)
         {
             _cellsPool.Get(this[pos.x, pos.y]).Target = new EcsPackedEntity();
+        }
+
+        public void ReleaseCell(int index)
+        {
+            _cellsPool.Get(_cells[index]).Target = new EcsPackedEntity();
         }
 
         public void SwapTargets(int2 pos1, int2 pos2)
@@ -127,16 +143,6 @@ namespace Client.Battle.Simulation
             var temp = this[pos1.x, pos1.y];
             this[pos1.x, pos1.y] = this[pos2.x, pos2.y];
             this[pos2.x, pos2.y] = temp;
-        }
-
-        public ref Cell GetCellDataFromIndex(int index)
-        {
-            return ref _cellsPool.Get(_cells[index]);
-        }
-
-        public ref Cell GetCellDataFromPosition(int2 pos)
-        {
-            return ref _cellsPool.Get(this[pos.x, pos.y]);
         }
 
         public bool TryGetTarget(int2 pos, out int targetEntity)
