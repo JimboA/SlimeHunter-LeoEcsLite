@@ -39,7 +39,7 @@ namespace Client.Battle.Simulation
             var world = systems.GetWorld();
             var random = _random.Value.Random;
 
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 3; i++)
             {
                 var index = random.Next(0, board.CellsAmount);
                 ref var cell = ref board.GetCellDataFromIndex(index);
