@@ -87,7 +87,7 @@ namespace Client.Battle.Simulation
             ref var cell = ref _cellsPool.Get(cellEntity);
             cell.Target = _world.PackEntity(entity);
             ref var gridPos = ref _gridPosPool.GetOrAdd(entity);
-            gridPos.Position = new int2(cell.Position);
+            gridPos.Position = cell.Position;
         }
 
         public void SetEntityInCell(int index, int entity)

@@ -18,10 +18,10 @@ namespace Client.Battle.View
     
     public sealed class CollapseViewSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<CollapseViewData, Started<FallingProcess>,
-            MonoLink<Transform>, CanFall>> _falling = default;
+        private EcsFilterInject<Inc<CollapseViewData, Started<FallingProcess>, MonoLink<Transform>>> _falling = default;
 
         private EcsPoolInject<FallingProcess> _fallingPool = default;
+        
         private EcsCustomInject<IBoard> _board = default;
         private EcsCustomInject<BattleService> _battle = default;
         

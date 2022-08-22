@@ -190,7 +190,7 @@ namespace Client.Battle
 
                 //---Collapse flow-------------------------------------------------------
                 .AddToGroup(new CollapseSystem())
-                .AddToGroup(new SpawnSystem())
+                .AddToGroup(new SpawnPiecesSystem())
 
                 //---Common--------------------------------------------------------------
                 .AddToGroup(new ElementsSetupSystem());

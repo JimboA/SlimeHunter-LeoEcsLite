@@ -6,7 +6,7 @@ using Unity.Mathematics;
 
 namespace Client.Battle.Simulation
 {
-    public sealed class SpawnSystem : IEcsRunSystem
+    public sealed class SpawnPiecesSystem : IEcsRunSystem
     {
         private EcsFilterInject<Inc<BattleStateChangedEvent>> _onStateChanged = GlobalIdents.Worlds.EventWorldName;
         private EcsFilterInject<Inc<Cell>> _cells = default;
@@ -16,6 +16,7 @@ namespace Client.Battle.Simulation
         private EcsCustomInject<IBoard> _board = default;
         private EcsCustomInject<BattleService> _battle = default; 
         private EcsCustomInject<BattleData> _battleData = default;
+        private EcsCustomInject<RandomService> _random = default;
 
         public void Run(IEcsSystems systems)
         {
@@ -29,22 +30,29 @@ namespace Client.Battle.Simulation
             }
         }
 
-        // TODO: temp. will be replaced with spawn from level asset
         private void SpawnNewPieces(IEcsSystems systems)
-        { 
-            if(!_battleData.Value.TryGet(BattleIdents.Blueprints.Slime, out var blueprint))
-                return;
-            
+        {
+            var random = _random.Value.Random;
             var board = _board.Value;
+            var scenario = _battleData.Value.CurrentLevel.Scenario;
+            var piecesToDrop = scenario.PiecesToDrop;
+            
             foreach (var cellEntity in _cells.Value)
             {
                 ref Cell cell = ref _cells.Pools.Inc1.Get(cellEntity);
                 if(!cell.IsEmpty(systems.GetWorld()))
                     continue;
                 
-                var modelEntity = blueprint.CreateModel(systems);
-                board.SetEntityInCell(cell.Position, modelEntity);
-                StartFallingProcess(modelEntity, cell.Position);
+                var chance = scenario.GetChance((float)random.NextDouble());
+                foreach (var piece in piecesToDrop)
+                {
+                    if(chance < piece.MinRate || chance > piece.MaxRate)
+                        continue;
+                    
+                    var modelEntity = piece.Blueprint.CreateModel(systems);
+                    board.SetEntityInCell(cell.Position, modelEntity);
+                    StartFallingProcess(modelEntity, cell.Position);
+                }
             }
         }
 

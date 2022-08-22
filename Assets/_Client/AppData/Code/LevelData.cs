@@ -9,8 +9,7 @@ namespace Client.AppData
         public int Num; 
         public BoardData Board;
         public WinLoseConditions WinLose;
-        public int MonstersActivationFrequency;
-        public int MonstersActivationPerCycle;
+        public LevelScenario Scenario;
         public bool IsComplete;
     }
 }

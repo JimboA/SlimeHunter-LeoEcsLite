@@ -20,19 +20,20 @@ namespace Client.Battle.Simulation
         {
             foreach (var _ in _onNewBattleCycle.Value)
             {
-                if(_battle.Value.CyclesCount % _battleData.Value.CurrentLevel.MonstersActivationFrequency == 0) 
-                    RandomActivate();
+                var scenario = _battleData.Value.CurrentLevel.Scenario;
+                if(_battle.Value.CyclesCount % scenario.MonstersActivationFrequency == 0) 
+                    RandomActivate(scenario);
             }
         }
 
         // TODO: replace with actual balanced rule (ha-ha.. balanced...).
-        private void RandomActivate()
+        private void RandomActivate(LevelScenario scenario)
         {
             var battle = _battle.Value;
             var canActPool = _canActPool.Value;
             var mobs = _mobs.Value;
             var dense = mobs.GetRawEntities();
-            var count = _battleData.Value.CurrentLevel.MonstersActivationPerCycle;
+            var count = scenario.MonstersActivationPerCycle;
             var random = _random.Value.Random;
 
             for (int i = 0; i < count; i++)

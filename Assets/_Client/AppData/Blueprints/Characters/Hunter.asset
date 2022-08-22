@@ -62,6 +62,21 @@ MonoBehaviour:
     CanAttackWhileMoving: 0
     CanMoveOnlyToEqualElements: 0
     AllowedElements: -1
+--- !u!114 &-6631508870853140156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43aee6eef0ebe334a9c86659142fb637, type: 3}
+  m_Name: CollapseViewDataSOProvider
+  m_EditorClassIdentifier: 
+  Value:
+    Duration: 0.35
+    EasingType: 26
 --- !u!114 &-6334266818090955563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +160,7 @@ MonoBehaviour:
   - {fileID: -5804515932646570802}
   - {fileID: 4840164208325303220}
   - {fileID: 2467355998018625212}
+  - {fileID: -6631508870853140156}
 --- !u!114 &1056492938355932949
 MonoBehaviour:
   m_ObjectHideFlags: 0

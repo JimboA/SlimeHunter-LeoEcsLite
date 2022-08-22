@@ -25,6 +25,47 @@ MonoBehaviour:
   WinLose:
     WinScore:
       Value: 100
-  MonstersActivationFrequency: 2
-  MonstersActivationPerCycle: 3
+  Scenario:
+    Probability:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -1.3560528
+        outSlope: -1.3560528
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.69999874
+        value: 0.05076483
+        inSlope: -0.28083163
+        outSlope: -0.28083163
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.29304808
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.16921538
+        outSlope: -0.16921538
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PiecesToDrop:
+    - MinRate: 0
+      MaxRate: 0.9
+      Blueprint: {fileID: 11400000, guid: a1b975038fb8cdf4a843d2ff6a86bcbf, type: 2}
+    - MinRate: 0.9
+      MaxRate: 1
+      Blueprint: {fileID: 11400000, guid: a1efa076f2894f7439472d86b04b9499, type: 2}
+    MonstersActivationFrequency: 2
+    MonstersActivationPerCycle: 3
   IsComplete: 0
