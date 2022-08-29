@@ -126,7 +126,7 @@ namespace Client.Battle.Simulation
             var indexNearTarget = _pathResultCache.Length - 2;
             ref var cell = ref board.GetCellDataFromIndex(_pathResultCache[indexNearTarget]);
             _moveRequestPool.Value.RaiseGameEvent(entity,
-                new GameEventData(currentPos, new int2(cell.Position), GameEvents.Move));
+                new GameEventData(currentPos, cell.Position, GameEvents.Move));
         }
 
         public void Destroy(IEcsSystems systems)

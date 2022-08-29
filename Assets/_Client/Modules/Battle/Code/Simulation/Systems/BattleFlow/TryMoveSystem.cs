@@ -20,10 +20,10 @@ namespace Client.Battle.Simulation
         {
             foreach (var entity in _walkers.Value)
             {
-                var requestPool = _walkers.Pools.Inc1;
-                
-                ref MoveToCellRequest moveRequest = ref requestPool.Get(entity);
-                ref Movable           movable     = ref _walkers.Pools.Inc2.Get(entity);
+                var pools = _walkers.Pools;
+
+                ref MoveToCellRequest moveRequest = ref pools.Inc1.Get(entity);
+                ref Movable           movable     = ref pools.Inc2.Get(entity);
 
                 _elementPool.Value.TryGet(entity, out Element element);
                 _powerPool.Value.TryGet(entity, out AttackPower power);
