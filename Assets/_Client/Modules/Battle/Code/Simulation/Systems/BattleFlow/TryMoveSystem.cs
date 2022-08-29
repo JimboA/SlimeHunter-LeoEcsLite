@@ -21,8 +21,9 @@ namespace Client.Battle.Simulation
             foreach (var entity in _walkers.Value)
             {
                 var pools = _walkers.Pools;
+                var requestPool = pools.Inc1;
 
-                ref MoveToCellRequest moveRequest = ref pools.Inc1.Get(entity);
+                ref MoveToCellRequest moveRequest = ref requestPool.Get(entity);
                 ref Movable           movable     = ref pools.Inc2.Get(entity);
 
                 _elementPool.Value.TryGet(entity, out Element element);
@@ -41,6 +42,11 @@ namespace Client.Battle.Simulation
                     {
                         moveRequest.WithSwap = true;
                     }
+                }
+                else
+                {
+                    // TODO: break path
+                    requestPool.Del(entity);
                 }
             }
         }
