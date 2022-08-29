@@ -1,6 +1,6 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins.ObjectPool;
+using JimboA.Plugins.ObjectPool;
 using UnityEngine;
 
 namespace Client.Battle.View

@@ -14,7 +14,10 @@ namespace Client.AppData
         SingleAttack,
         Move
     }
-
+    
+    /// <summary>
+    /// represents the game event data we want to log for playback
+    /// </summary>
     public interface IGameEvent
     {
         public GameEventData EventData { get; set; }

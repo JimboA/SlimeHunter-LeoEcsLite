@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 using Client.Input;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Unity.Mathematics;

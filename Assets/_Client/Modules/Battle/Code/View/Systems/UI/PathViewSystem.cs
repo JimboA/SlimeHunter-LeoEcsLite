@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 using Client.Battle.Simulation;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins;
+using JimboA.Plugins;
 using Unity.Mathematics;
 using UnityEngine;
 

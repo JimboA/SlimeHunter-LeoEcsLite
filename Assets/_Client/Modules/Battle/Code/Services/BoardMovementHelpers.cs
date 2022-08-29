@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using AOT;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using Unity.Burst;
 using Unity.Mathematics;

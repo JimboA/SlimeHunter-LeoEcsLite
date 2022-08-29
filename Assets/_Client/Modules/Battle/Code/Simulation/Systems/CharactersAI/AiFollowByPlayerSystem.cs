@@ -1,10 +1,10 @@
 using System;
 using System.Runtime.CompilerServices;
 using Client.AppData;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins;
+using JimboA.Plugins;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;

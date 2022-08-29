@@ -1,7 +1,7 @@
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace JimmboA.Plugins.Tween
+namespace JimboA.Plugins.Tween
 {
     [System.Serializable]
     public struct TweenSpriteColor : ITweenComponent

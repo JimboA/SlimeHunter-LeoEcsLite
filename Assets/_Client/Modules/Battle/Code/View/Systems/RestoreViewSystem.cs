@@ -2,7 +2,7 @@
 using Client.Battle.View.UI;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins.ObjectPool;
+using JimboA.Plugins.ObjectPool;
 using UnityEngine;
 
 namespace Client.Battle.View
@@ -10,7 +10,7 @@ namespace Client.Battle.View
     public sealed class RestoreViewSystem : IEcsRunSystem
     {
         private EcsFilterInject<Inc<PlaybackEndEvent>> _onEndPlayback;
-        private EcsFilterInject<Inc<BlueprintLink, GridPosition>, Exc<ViewLinkComponent>> _views;
+        private EcsFilterInject<Inc<BlueprintLink, GridPosition>, Exc<ViewLink>> _views;
 
         private EcsCustomInject<BattleService> _battle;
         private EcsCustomInject<IBoard> _board;
@@ -22,6 +22,7 @@ namespace Client.Battle.View
             {
                 var battle = _battle.Value;
                 var board = _board.Value;
+                var world = systems.GetWorld();
                 
                 Debug.LogWarning($"TRY RESTORE VIEW");
                 if(!battle.AllowView)
@@ -35,7 +36,7 @@ namespace Client.Battle.View
                     ref var gridPos = ref pools.Inc2.Get(entity);
                     ref var cell = ref board.GetCellDataFromPosition(gridPos.Position);
 
-                    blueprint.CreateView(systems, entity, cell.WorldPosition, _viewsObjectPool.Value);
+                    blueprint.CreateView(world, entity, cell.WorldPosition, _viewsObjectPool.Value);
                 }
             }
         }

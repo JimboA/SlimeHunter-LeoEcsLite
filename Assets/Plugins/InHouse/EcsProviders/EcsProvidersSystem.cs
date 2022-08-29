@@ -1,7 +1,7 @@
 using Leopotam.EcsLite;
 using UnityEngine.SceneManagement;
 
-namespace JimmboA.Plugins.EcsProviders 
+namespace JimboA.Plugins.EcsProviders 
 {
     // TODO: rework
     internal sealed class EcsProvidersSystem : IEcsPreInitSystem, IEcsDestroySystem

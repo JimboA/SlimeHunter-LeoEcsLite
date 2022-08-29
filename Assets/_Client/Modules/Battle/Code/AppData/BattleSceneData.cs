@@ -1,4 +1,4 @@
-﻿using JimmboA.Plugins.EcsProviders;
+﻿using JimboA.Plugins.EcsProviders;
 
 namespace Client.AppData
 {

@@ -1,12 +1,12 @@
 using System;
 using System.Diagnostics;
 using Leopotam.EcsLite;
-using JimmboA.Plugins.ObjectPool;
+using JimboA.Plugins.ObjectPool;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
-namespace JimmboA.Plugins.EcsProviders
+namespace JimboA.Plugins.EcsProviders
 {
     public static class EcsProvidersExtensions
     {

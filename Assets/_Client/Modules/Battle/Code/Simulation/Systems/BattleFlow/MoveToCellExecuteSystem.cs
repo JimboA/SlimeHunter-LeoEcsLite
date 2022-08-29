@@ -8,6 +8,7 @@ namespace Client.Battle.Simulation
     public sealed class MoveToCellExecuteSystem : IEcsRunSystem
     {
         private EcsFilterInject<Inc<MoveToCellRequest, GridPosition, Turn>> _walkers = default;
+        
         private EcsPoolInject<MoveProcess> _movedPool = default;
 
         private EcsCustomInject<IBoard> _board = default;

@@ -1,5 +1,5 @@
 ﻿using System;
-using JimmboA.Plugins.EcsProviders;
+using JimboA.Plugins.EcsProviders;
 using Leopotam.EcsLite;
 using UnityEngine;
 

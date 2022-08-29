@@ -1,5 +1,5 @@
 ﻿using System;
-using JimmboA.Plugins.EcsProviders;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace Client.AppData
         [SerializeField] public TComponent Value;
         public override void Convert(int entity, EcsWorld world)
         {
-            world.GetPool<TComponent>().Add(entity) = Value;
+            world.GetPool<TComponent>().GetOrAdd(entity) = Value;
         }
 
         public override Type GetComponentType()

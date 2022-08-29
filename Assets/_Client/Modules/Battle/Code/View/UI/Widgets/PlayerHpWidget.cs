@@ -1,6 +1,6 @@
-using JimmboA.Plugins.EcsProviders;
+using JimboA.Plugins.EcsProviders;
 using Leopotam.EcsLite;
-using JimmboA.Plugins.Tween;
+using JimboA.Plugins.Tween;
 using Unity.Mathematics;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;

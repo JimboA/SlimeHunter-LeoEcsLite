@@ -18,13 +18,273 @@ MonoBehaviour:
     Columns: 7
     Rows: 7
     ZOffset: 0
-    Pieces: []
-    Monsters: []
+    Cells:
+    - Position:
+        x: 0
+        y: 0
+      WorldPosition: {x: 0, y: 0, z: 0}
+      Name: Cell
+    - Position:
+        x: 1
+        y: 0
+      WorldPosition: {x: 1, y: 0, z: 0}
+      Name: Cell
+    - Position:
+        x: 2
+        y: 0
+      WorldPosition: {x: 2, y: 0, z: 0}
+      Name: Cell
+    - Position:
+        x: 3
+        y: 0
+      WorldPosition: {x: 3, y: 0, z: 0}
+      Name: Cell
+    - Position:
+        x: 4
+        y: 0
+      WorldPosition: {x: 4, y: 0, z: 0}
+      Name: Cell
+    - Position:
+        x: 5
+        y: 0
+      WorldPosition: {x: 5, y: 0, z: 0}
+      Name: Cell
+    - Position:
+        x: 6
+        y: 0
+      WorldPosition: {x: 6, y: 0, z: 0}
+      Name: Cell
+    - Position:
+        x: 0
+        y: 1
+      WorldPosition: {x: 0, y: 1, z: 0}
+      Name: Cell
+    - Position:
+        x: 1
+        y: 1
+      WorldPosition: {x: 1, y: 1, z: 0}
+      Name: Cell
+    - Position:
+        x: 2
+        y: 1
+      WorldPosition: {x: 2, y: 1, z: 0}
+      Name: Cell
+    - Position:
+        x: 3
+        y: 1
+      WorldPosition: {x: 3, y: 1, z: 0}
+      Name: Cell
+    - Position:
+        x: 4
+        y: 1
+      WorldPosition: {x: 4, y: 1, z: 0}
+      Name: Cell
+    - Position:
+        x: 5
+        y: 1
+      WorldPosition: {x: 5, y: 1, z: 0}
+      Name: Cell
+    - Position:
+        x: 6
+        y: 1
+      WorldPosition: {x: 6, y: 1, z: 0}
+      Name: Cell
+    - Position:
+        x: 0
+        y: 2
+      WorldPosition: {x: 0, y: 2, z: 0}
+      Name: Cell
+    - Position:
+        x: 1
+        y: 2
+      WorldPosition: {x: 1, y: 2, z: 0}
+      Name: Cell
+    - Position:
+        x: 2
+        y: 2
+      WorldPosition: {x: 2, y: 2, z: 0}
+      Name: Cell
+    - Position:
+        x: 3
+        y: 2
+      WorldPosition: {x: 3, y: 2, z: 0}
+      Name: Cell
+    - Position:
+        x: 4
+        y: 2
+      WorldPosition: {x: 4, y: 2, z: 0}
+      Name: Cell
+    - Position:
+        x: 5
+        y: 2
+      WorldPosition: {x: 5, y: 2, z: 0}
+      Name: Cell
+    - Position:
+        x: 6
+        y: 2
+      WorldPosition: {x: 6, y: 2, z: 0}
+      Name: Cell
+    - Position:
+        x: 0
+        y: 3
+      WorldPosition: {x: 0, y: 3, z: 0}
+      Name: Cell
+    - Position:
+        x: 1
+        y: 3
+      WorldPosition: {x: 1, y: 3, z: 0}
+      Name: Cell
+    - Position:
+        x: 2
+        y: 3
+      WorldPosition: {x: 2, y: 3, z: 0}
+      Name: Cell
+    - Position:
+        x: 3
+        y: 3
+      WorldPosition: {x: 3, y: 3, z: 0}
+      Name: Cell
+    - Position:
+        x: 4
+        y: 3
+      WorldPosition: {x: 4, y: 3, z: 0}
+      Name: Cell
+    - Position:
+        x: 5
+        y: 3
+      WorldPosition: {x: 5, y: 3, z: 0}
+      Name: Cell
+    - Position:
+        x: 6
+        y: 3
+      WorldPosition: {x: 6, y: 3, z: 0}
+      Name: Cell
+    - Position:
+        x: 0
+        y: 4
+      WorldPosition: {x: 0, y: 4, z: 0}
+      Name: Cell
+    - Position:
+        x: 1
+        y: 4
+      WorldPosition: {x: 1, y: 4, z: 0}
+      Name: Cell
+    - Position:
+        x: 2
+        y: 4
+      WorldPosition: {x: 2, y: 4, z: 0}
+      Name: Cell
+    - Position:
+        x: 3
+        y: 4
+      WorldPosition: {x: 3, y: 4, z: 0}
+      Name: Cell
+    - Position:
+        x: 4
+        y: 4
+      WorldPosition: {x: 4, y: 4, z: 0}
+      Name: Cell
+    - Position:
+        x: 5
+        y: 4
+      WorldPosition: {x: 5, y: 4, z: 0}
+      Name: Cell
+    - Position:
+        x: 6
+        y: 4
+      WorldPosition: {x: 6, y: 4, z: 0}
+      Name: Cell
+    - Position:
+        x: 0
+        y: 5
+      WorldPosition: {x: 0, y: 5, z: 0}
+      Name: Cell
+    - Position:
+        x: 1
+        y: 5
+      WorldPosition: {x: 1, y: 5, z: 0}
+      Name: Cell
+    - Position:
+        x: 2
+        y: 5
+      WorldPosition: {x: 2, y: 5, z: 0}
+      Name: Cell
+    - Position:
+        x: 3
+        y: 5
+      WorldPosition: {x: 3, y: 5, z: 0}
+      Name: Cell
+    - Position:
+        x: 4
+        y: 5
+      WorldPosition: {x: 4, y: 5, z: 0}
+      Name: Cell
+    - Position:
+        x: 5
+        y: 5
+      WorldPosition: {x: 5, y: 5, z: 0}
+      Name: Cell
+    - Position:
+        x: 6
+        y: 5
+      WorldPosition: {x: 6, y: 5, z: 0}
+      Name: Cell
+    - Position:
+        x: 0
+        y: 6
+      WorldPosition: {x: 0, y: 6, z: 0}
+      Name: Cell
+    - Position:
+        x: 1
+        y: 6
+      WorldPosition: {x: 1, y: 6, z: 0}
+      Name: Cell
+    - Position:
+        x: 2
+        y: 6
+      WorldPosition: {x: 2, y: 6, z: 0}
+      Name: Cell
+    - Position:
+        x: 3
+        y: 6
+      WorldPosition: {x: 3, y: 6, z: 0}
+      Name: Cell
+    - Position:
+        x: 4
+        y: 6
+      WorldPosition: {x: 4, y: 6, z: 0}
+      Name: Cell
+    - Position:
+        x: 5
+        y: 6
+      WorldPosition: {x: 5, y: 6, z: 0}
+      Name: Cell
+    - Position:
+        x: 6
+        y: 6
+      WorldPosition: {x: 6, y: 6, z: 0}
+      Name: Cell
+    Characters:
+    - Position:
+        x: 3
+        y: 0
+      WorldPosition: {x: 3, y: 0, z: 0}
+      Name: Hero
+    - Position:
+        x: 1
+        y: 5
+      WorldPosition: {x: 1, y: 5, z: 0}
+      Name: Hunter
+    - Position:
+        x: 5
+        y: 5
+      WorldPosition: {x: 5, y: 5, z: 0}
+      Name: Hunter
     Blocks: []
     Items: []
   WinLose:
     WinScore:
-      Value: 100
+      Value: 50
   Scenario:
     Probability:
       serializedVersion: 2
@@ -61,9 +321,9 @@ MonoBehaviour:
       m_RotationOrder: 4
     PiecesToDrop:
     - MinRate: 0
-      MaxRate: 0.9
+      MaxRate: 0.95
       Blueprint: {fileID: 11400000, guid: a1b975038fb8cdf4a843d2ff6a86bcbf, type: 2}
-    - MinRate: 0.9
+    - MinRate: 0.95
       MaxRate: 1
       Blueprint: {fileID: 11400000, guid: a1efa076f2894f7439472d86b04b9499, type: 2}
     MonstersActivationFrequency: 2

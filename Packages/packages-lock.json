@@ -108,7 +108,7 @@
       "dependencies": {}
     },
     "com.unity.2d.tilemap.extras": {
-      "version": "1.8.1-preview",
+      "version": "1.8.3-preview",
       "depth": 0,
       "source": "registry",
       "dependencies": {

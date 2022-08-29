@@ -1,7 +1,7 @@
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace JimmboA.Plugins.EcsProviders
+namespace JimboA.Plugins.EcsProviders
 {
     public abstract class MonoProvider<T> : MonoProviderBase, IConvertToEntity where T : struct 
     {

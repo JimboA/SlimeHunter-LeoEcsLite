@@ -1,5 +1,5 @@
 using System;
-using JimmboA.Plugins;
+using JimboA.Plugins;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
@@ -7,7 +7,7 @@ using Unity.Mathematics;
 
 namespace Client.Battle.Simulation
 {
-    // A very naive and straightforward implementation of A* algorithm, but for our "turn based" case this is enough 
+    // A very naive and straightforward implementation of A* algorithm, but for our "turn based" case this is enough for now.
     public class GridPathFinding
     {
         private const int MOVE_STRAIGHT_COST = 10;

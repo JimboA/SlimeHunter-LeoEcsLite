@@ -1,12 +1,9 @@
 using System.Runtime.CompilerServices;
 using Client.Input;
-using JimmboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins;
+using JimboA.Plugins;
 using Unity.Mathematics;
-using UnityEditorInternal.Profiling.Memory.Experimental;
-using UnityEngine;
 
 namespace Client.Battle.Simulation 
 {

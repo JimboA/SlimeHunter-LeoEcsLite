@@ -7,6 +7,7 @@ namespace Client.Battle.Simulation
     public sealed class SingleAttackExecuteSystem : IEcsRunSystem
     {
         private EcsFilterInject<Inc<SingleAttackRequest, Turn>> _attackers = default;
+        
         private EcsPoolInject<DamageRequest> _damagePool = default;
         private EcsPoolInject<SingleAttackProcess> _attackPool = default;
 

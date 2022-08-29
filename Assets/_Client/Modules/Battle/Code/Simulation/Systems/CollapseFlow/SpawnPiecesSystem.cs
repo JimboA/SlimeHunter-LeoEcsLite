@@ -25,12 +25,12 @@ namespace Client.Battle.Simulation
                 ref var stateChanged = ref _onStateChanged.Pools.Inc1.Get(eventEntity);
                 if (stateChanged.phase == BattlePhase.Collapse)
                 {
-                    SpawnNewPieces(systems);
+                    SpawnNewPieces(systems.GetWorld());
                 }
             }
         }
 
-        private void SpawnNewPieces(IEcsSystems systems)
+        private void SpawnNewPieces(EcsWorld world)
         {
             var random = _random.Value.Random;
             var board = _board.Value;
@@ -40,7 +40,7 @@ namespace Client.Battle.Simulation
             foreach (var cellEntity in _cells.Value)
             {
                 ref Cell cell = ref _cells.Pools.Inc1.Get(cellEntity);
-                if(!cell.IsEmpty(systems.GetWorld()))
+                if(!cell.IsEmpty(world))
                     continue;
                 
                 var chance = scenario.GetChance((float)random.NextDouble());
@@ -49,7 +49,7 @@ namespace Client.Battle.Simulation
                     if(chance < piece.MinRate || chance > piece.MaxRate)
                         continue;
                     
-                    var modelEntity = piece.Blueprint.CreateModel(systems);
+                    var modelEntity = piece.Blueprint.CreateModel(world);
                     board.SetEntityInCell(cell.Position, modelEntity);
                     StartFallingProcess(modelEntity, cell.Position);
                 }

@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using Client.AppData;
 using Client.Battle.Simulation;
-using JimmboA.Plugins.EcsProviders;
+using JimboA.Plugins.EcsProviders;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;

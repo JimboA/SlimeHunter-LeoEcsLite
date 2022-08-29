@@ -1,6 +1,6 @@
 using System;
 using Leopotam.EcsLite;
-using JimmboA.Plugins;
+using JimboA.Plugins;
 
 namespace Client.Battle.Simulation
 {
@@ -8,6 +8,10 @@ namespace Client.Battle.Simulation
     {
     }
 
+    /// <summary>
+    /// A "process" is an abstraction that describes something that has a duration in time and state that you can... well, process.
+    /// Use BattleService.CreateNewProcess API to create a process entity.
+    /// </summary>
     [Serializable]
     public struct Process : IStateData
     {

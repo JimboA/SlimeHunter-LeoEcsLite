@@ -1,4 +1,4 @@
-using JimmboA.Plugins.EcsProviders;
+using JimboA.Plugins.EcsProviders;
 using UnityEngine;
 
 namespace Client.Battle.View.Providers

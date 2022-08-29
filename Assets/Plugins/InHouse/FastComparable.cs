@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace JimmboA.Plugins
+namespace JimboA.Plugins
 {
     public class FastComparable : IEqualityComparer<int>
     {

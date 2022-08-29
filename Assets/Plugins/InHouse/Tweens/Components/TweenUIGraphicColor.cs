@@ -2,7 +2,7 @@ using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JimmboA.Plugins.Tween
+namespace JimboA.Plugins.Tween
 {
     public struct TweenUIGraphicColor : ITweenComponent
     {

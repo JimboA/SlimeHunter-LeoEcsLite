@@ -1,6 +1,6 @@
 ﻿using Client.AppData;
 using Leopotam.EcsLite;
-using JimmboA.Plugins;
+using JimboA.Plugins;
 using UnityEngine;
 
 namespace Client.Battle.View

@@ -1,5 +1,5 @@
 using Leopotam.EcsLite;
-using JimmboA.Plugins;
+using JimboA.Plugins;
 using Unity.Mathematics;
 using UnityEngine;
 

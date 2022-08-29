@@ -15,7 +15,8 @@ MonoBehaviour:
   levels:
   - {fileID: 11400000, guid: b70b74dc4bf781946bcafb9d5cf0507d, type: 2}
   currentLevelId: 0
-  characters:
+  blueprints:
+  - {fileID: 11400000, guid: cbda9fd6165d44c459e08eb0f381992d, type: 2}
   - {fileID: 11400000, guid: 1d5869a69ee269f45a61da2d1fb25bd4, type: 2}
   - {fileID: 11400000, guid: a1efa076f2894f7439472d86b04b9499, type: 2}
   - {fileID: 11400000, guid: a1b975038fb8cdf4a843d2ff6a86bcbf, type: 2}

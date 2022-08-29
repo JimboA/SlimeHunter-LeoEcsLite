@@ -5,14 +5,13 @@ using Client.Input;
 using Client.Input.Ugui;
 using Client.Battle.View;
 using Client.Battle.View.UI;
-using JimmboA.Plugins.EcsProviders;
+using JimboA.Plugins.EcsProviders;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.ExtendedSystems;
 using Leopotam.EcsLite.Unity.Ugui;
-using Leopotam.EcsLite.UnityEditor;
-using JimmboA.Plugins.ObjectPool;
-using JimmboA.Plugins.Tween;
+using JimboA.Plugins.ObjectPool;
+using JimboA.Plugins.Tween;
 using UnityEngine;
 
 namespace Client.Battle
@@ -21,7 +20,8 @@ namespace Client.Battle
     {
         // for tests
         public bool LoadAtStart;
-        public bool AllowView;
+        // TODO: implement RestoreViewSystem first
+        //public bool AllowView;
         public int  PlaybackSpeed;
 
         [SerializeField] private BattleData _battleData;
@@ -42,7 +42,7 @@ namespace Client.Battle
 
         private void Awake()
         {
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
 
             // TODO: add configs to worlds
             _world             = new EcsWorld();
@@ -50,7 +50,7 @@ namespace Client.Battle
             _board             = new Board(_world, _battleData.CurrentLevel.Board);
             _boardHelpers      = new BoardMovementHelpers(_world, _board);
             _battle            = new BattleService(_world, new BattleState(_battleData.currentLevelId));
-            _battle.AllowView  = AllowView;
+            _battle.AllowView  = true;
 
             // for tests
             if (LoadAtStart && _battle.LoadState(_board, _world))
@@ -103,7 +103,7 @@ namespace Client.Battle
                 .DelHere<Changed<Path>>()
                 .DelHere<Changed<Score>>()
 #if UNITY_EDITOR
-                .Add(new EcsWorldDebugSystem())
+                .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif
                 .Inject(
                     _battleData,
@@ -124,13 +124,18 @@ namespace Client.Battle
         {
             var systemGroup = new List<IEcsSystem>(64);
             systemGroup
-                //---Game actions registration-------------------------------------------
+                //---Initialization-------------------------------------------
+                
+                // game actions registration
                 .AddToGroup(new ProcessSystem<ActivateProcess>())
                 .AddToGroup(new ProcessSystem<SingleAttackProcess>())
                 .AddToGroup(new ProcessSystem<MoveProcess>())
                 .AddToGroup(new ProcessSystem<DamageProcess>())
                 .AddToGroup(new ProcessSystem<DyingProcess>())
                 .AddToGroup(new ProcessSystem<FallingProcess>())
+                
+                // board setup
+                .AddToGroup(new BoardInitSystem())
 
                 //---Playback systems----------------------------------------------------
                 .AddToGroup(new PlaybackEndSystem())
@@ -145,16 +150,6 @@ namespace Client.Battle
                 .AddToGroup(new AddTargetToPathSystem())
                 .AddToGroup(new PathCursorSystem())
                 .AddToGroup(new ClearPathOnNewCycleSystem())
-                
-                // ugui
-                .AddToGroup(new GoButtonClickEventSystem())
-                
-                // for tests
-                .AddToGroup(new SaveButtonClickEventSystem())
-                .AddToGroup(new RetryButtonClickEventSystem())
-
-                //---Board setup---------------------------------------------------------
-                .AddToGroup(new BoardInitSystem())
 
                 //---State processing----------------------------------------------------
                 .AddToGroup(new BattleStateSystem())
@@ -205,8 +200,10 @@ namespace Client.Battle
 
                 //---Initialization------------------------------------------------------
                 .AddToGroup(new CameraSetupSystem())
+                .AddToGroup(new BattleUIInitSystem())
 
                 //---Update--------------------------------------------------------------
+
                 // timers
                 .AddToGroup(new DelayedOperationsSystem<AttackHitAnimationEvent>())
 
@@ -228,9 +225,11 @@ namespace Client.Battle
                 .AddToGroup(new ScoreViewSystem())
                 .AddToGroup(new WinLoseViewSystem())
                 .AddToGroup(new RecycleActivationViewSystem())
+                .AddToGroup(new PathViewSystem())
+                .AddToGroup(new PathCursorViewSystem())
+                .AddToGroup(new SetElementViewSystem())
 
                 // UI
-                .AddToGroup(new BattleUIInitSystem())
                 .AddToGroup(new HealthWidgetSetupSystem())
                 .AddToGroup(new UpdateWidgetSystem<PlayerHpWidget, int>())
                 .DelHere<UpdateWidgetRequest<PlayerHpWidget, int>>(_world)
@@ -240,11 +239,15 @@ namespace Client.Battle
                 .DelHere<UpdateWidgetRequest<OnBoardHpWidget, int>>(_world)
                 .AddToGroup(new ShowScreenSystem())
                 .AddToGroup(new HideScreensSystem())
+                
+                // ugui events callbacks
+                .AddToGroup(new GoButtonClickEventSystem())
+                .AddToGroup(new SaveButtonClickEventSystem())
+                .AddToGroup(new RetryButtonClickEventSystem())
 
                 // common view
-                .AddToGroup(new PathViewSystem())
-                .AddToGroup(new PathCursorViewSystem())
-                .AddToGroup(new SetElementViewSystem())
+                .AddToGroup(new AnimationSystem())
+                .DelHere<SetAnimatorParameterRequest>(_world)
                 .AddToGroup(new AutoDestroyParticleFxSystem())
                 .AddToGroup(new ShakeSystem())
                 .AddToGroup(new KillViewSystem());

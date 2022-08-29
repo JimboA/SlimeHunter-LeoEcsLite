@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Leopotam.EcsLite;
 using UnityEngine.SceneManagement;
 
-namespace JimmboA.Plugins.EcsProviders
+namespace JimboA.Plugins.EcsProviders
 {
     internal static class WorldsHandler
     {

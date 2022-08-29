@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1101166988023296044}
   - component: {fileID: 8663656012817591406}
   - component: {fileID: 6010115893642181864}
+  - component: {fileID: -8761301939308543114}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: 6e70c0c742bc4c34995c58c2088f89b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -220,8 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b809acdd5d99e0f45abfdc11acad61f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityID: 
-  worldName: 
+  WorldName: 
+  EntityID: 
 --- !u!114 &6010115893642181864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +237,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     Value: {fileID: 2603687649862367899}
+--- !u!114 &-8761301939308543114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278020496969257258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c7344e52954bea837f40cddb5b6daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    Value: {fileID: 1278020496969257256}

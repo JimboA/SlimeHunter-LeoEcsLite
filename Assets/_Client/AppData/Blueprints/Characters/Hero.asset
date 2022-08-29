@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: HealthSOProvider
   m_EditorClassIdentifier: 
   Value:
-    Value: 20
+    Value: 8
 --- !u!114 &1399807566038408762
 MonoBehaviour:
   m_ObjectHideFlags: 0

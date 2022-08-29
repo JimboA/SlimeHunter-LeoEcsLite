@@ -3,7 +3,7 @@ using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace JimmboA.Plugins.Tween
+namespace JimboA.Plugins.Tween
 {
     [System.Serializable]
     public enum EasingType : int

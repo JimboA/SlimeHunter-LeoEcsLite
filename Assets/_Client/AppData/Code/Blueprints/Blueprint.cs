@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using Client.Battle.Simulation;
 using Client.Battle.View;
-using JimmboA.Plugins.EcsProviders;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.EcsProviders;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
-using JimmboA.Plugins.ObjectPool;
+using JimboA.Plugins.ObjectPool;
 using UnityEngine;
 
 namespace Client.AppData.Blueprints
@@ -15,9 +15,8 @@ namespace Client.AppData.Blueprints
         [SerializeReference] public List<ComponentProviderBase> modelComponents;
         [SerializeReference] public List<ComponentProviderBase> viewComponents;
 
-        public int CreateModel(IEcsSystems systems)
+        public int CreateModel(EcsWorld world)
         {
-            var world = systems.GetWorld();
             var entity = world.NewEntity();
             foreach (var componentProvider in modelComponents)
             {
@@ -29,22 +28,30 @@ namespace Client.AppData.Blueprints
             return entity;
         }
 
-        public int CreateView(IEcsSystems systems, int model, Vector3 position, PoolContainer pool = null)
+        public void SetModelFor(int entity, EcsWorld world)
         {
-            var world = systems.GetWorld();
+            foreach (var componentProvider in modelComponents)
+            {
+                componentProvider.Convert(entity, world);
+            }
+
+            world.Add<ModelCreatedEvent>(entity);
+            world.GetOrAdd<BlueprintLink>(entity).Blueprint = this;
+        }
+
+        public int CreateView(EcsWorld world, int model, Vector3 position, PoolContainer pool = null)
+        {
             foreach (var componentProvider in viewComponents)
             {
                 componentProvider.Convert(model, world);
             }
             
-            var prefab = world.Get<ViewLinkComponent>(model).Prefab;
+            var prefab = world.Get<ViewLink>(model).Prefab;
             var provider = world.CreatViewForEntity(model, prefab, position, Quaternion.identity, pool);
             if (provider.TryGetEntity(out var viewEntity))
             {
                 ref var transform = ref world.Add<MonoLink<Transform>>(viewEntity);
                 transform.Value = provider.transform;
-                ref var renderer = ref world.Add<MonoLink<SpriteRenderer>>(viewEntity);
-                renderer.Value = provider.GetComponent<SpriteRenderer>();
                 world.Add<ViewCreatedEvent>(viewEntity);
                 return viewEntity;
             }

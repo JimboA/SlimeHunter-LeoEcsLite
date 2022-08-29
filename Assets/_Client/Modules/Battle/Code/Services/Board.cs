@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Client.AppData;
-using JimmboA.Plugins.FrameworkExtensions;
+using Client.AppData.Blueprints;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
-using JimmboA.Plugins;
+using JimboA.Plugins;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -76,18 +78,11 @@ namespace Client.Battle.Simulation
                     var entity = _world.NewEntity();
                     ref var cell = ref _cellsPool.Add(entity);
                     cell.Position = new int2(column, row);
-                    cell.WorldPosition = new Vector3(column, row, _zPos);
+                    ref var gridPos = ref _gridPosPool.Add(entity);
+                    gridPos.Position = cell.Position;
                     this[column, row] = entity;
                 }
             }
-        }
-
-        private void SetEntity(int cellEntity, int entity)
-        {
-            ref var cell = ref _cellsPool.Get(cellEntity);
-            cell.Target = _world.PackEntity(entity);
-            ref var gridPos = ref _gridPosPool.GetOrAdd(entity);
-            gridPos.Position = cell.Position;
         }
 
         public void SetEntityInCell(int index, int entity)
@@ -149,10 +144,18 @@ namespace Client.Battle.Simulation
         {
             return _cellsPool.Get(this[pos.x, pos.y]).Target.Unpack(_world, out targetEntity);
         }
-        
+
         public bool CheckBounds(int2 pos)
         {
-            return pos.x < 0 || pos.x > _columns - 1 || pos.y < 0 || pos.y > _rows - 1;
+            return !(pos.x < 0 || pos.x > _columns - 1 || pos.y < 0 || pos.y > _rows - 1);
+        }
+
+        private void SetEntity(int cellEntity, int entity)
+        {
+            ref var cell = ref _cellsPool.Get(cellEntity);
+            cell.Target = _world.PackEntity(entity);
+            ref var gridPos = ref _gridPosPool.GetOrAdd(entity);
+            gridPos.Position = cell.Position;
         }
     }
     

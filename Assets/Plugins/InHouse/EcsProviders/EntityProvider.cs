@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace JimmboA.Plugins.EcsProviders
+namespace JimboA.Plugins.EcsProviders
 {
     [DisallowMultipleComponent]
     public sealed class EntityProvider : MonoBehaviour

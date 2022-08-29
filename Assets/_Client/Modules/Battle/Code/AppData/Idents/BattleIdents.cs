@@ -19,5 +19,14 @@ namespace Client.AppData
             public const string Slime = "Slime";
             public const string Hunter = "Hunter";
         }
+        
+        public static class Elements
+        {
+            public const string Fire = nameof(Client.Battle.Simulation.Elements.Fire);
+            public const string Water = nameof(Client.Battle.Simulation.Elements.Water);
+            public const string Ice = nameof(Client.Battle.Simulation.Elements.Ice);
+            public const string Electric = nameof(Client.Battle.Simulation.Elements.Electric);
+            public const string Earth = nameof(Client.Battle.Simulation.Elements.Earth);
+        }
     }
 }

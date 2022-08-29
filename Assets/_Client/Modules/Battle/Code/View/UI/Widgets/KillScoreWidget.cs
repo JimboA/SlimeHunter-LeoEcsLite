@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Leopotam.EcsLite;
-using JimmboA.Plugins.Tween;
+using JimboA.Plugins.Tween;
 using TMPro;
 using UnityEngine;
 

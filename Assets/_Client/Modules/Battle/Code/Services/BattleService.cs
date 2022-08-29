@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Client.AppData;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -109,6 +109,7 @@ namespace Client.Battle.Simulation
         
         #region SaveLoad
 
+        // TODO: move to separate class maybe
         public void SaveState(IBoard board, EcsWorld world)
         {
             State.CyclesCount = CyclesCount;

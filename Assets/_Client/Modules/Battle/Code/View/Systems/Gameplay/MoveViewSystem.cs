@@ -2,7 +2,7 @@ using Client.AppData;
 using Client.Battle.Simulation;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins.Tween;
+using JimboA.Plugins.Tween;
 using UnityEngine;
 
 namespace Client.Battle.View

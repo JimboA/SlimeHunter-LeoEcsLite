@@ -12,16 +12,16 @@ namespace Client.AppData
     {
         [SerializeReference] public List<LevelData> levels;
         [SerializeField] public int currentLevelId;
-        [SerializeField] private List<Blueprint> characters;
+        [SerializeField] private List<Blueprint> blueprints;
         public LevelData CurrentLevel => levels[currentLevelId];
 
         private Dictionary<int, int> _names = new Dictionary<int, int>();
 
         private void OnEnable()
         {
-            for (int i = 0; i < characters.Count; i++)
+            for (int i = 0; i < blueprints.Count; i++)
             {
-                var key = characters[i].name;
+                var key = blueprints[i].name;
                 DebugNoName(key);
                 _names.Add(key.GetHashCode(), i);
             }
@@ -33,13 +33,15 @@ namespace Client.AppData
 
             if (_names.TryGetValue(key, out int index))
             {
-                blueprint = characters[index];
+                blueprint = blueprints[index];
                 return true;
             }
 
             blueprint = default;
             return false;
         }
+
+        #region Debug
 
         [Conditional("DEBUG")]
         private void DebugNoName(string name)
@@ -50,5 +52,7 @@ namespace Client.AppData
                 throw new NullReferenceException();
             }
         }
+
+        #endregion
     }
 }

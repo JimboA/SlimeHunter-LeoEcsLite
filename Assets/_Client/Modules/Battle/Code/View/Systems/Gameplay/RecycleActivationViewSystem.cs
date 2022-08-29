@@ -1,7 +1,7 @@
 ﻿using Client.Battle.Simulation;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins.ObjectPool;
+using JimboA.Plugins.ObjectPool;
 
 namespace Client.Battle.View
 {

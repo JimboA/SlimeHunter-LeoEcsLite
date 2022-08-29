@@ -5,7 +5,7 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 
 namespace Client.Input
 {

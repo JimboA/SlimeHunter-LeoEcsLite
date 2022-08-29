@@ -3,7 +3,7 @@ using Client.AppData;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 
 namespace Client.Battle.Simulation
 {

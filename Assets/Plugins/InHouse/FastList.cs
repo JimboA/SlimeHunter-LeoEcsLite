@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace JimmboA.Plugins
+namespace JimboA.Plugins
 {
     [System.Serializable]
     public class FastList<T> : IEnumerable<T>

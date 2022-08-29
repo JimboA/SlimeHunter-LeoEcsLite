@@ -1,11 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using Client.AppData;
 using Client.Battle.Simulation;
-using JimmboA.Plugins.EcsProviders;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.EcsProviders;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins.ObjectPool;
+using JimboA.Plugins.ObjectPool;
 using UnityEngine;
 
 namespace Client.Battle.View
@@ -20,13 +20,16 @@ namespace Client.Battle.View
     
     public sealed class ActivateMonstersViewSystem : IEcsRunSystem
     {
+        private static readonly int ActivateAnimation = Animator.StringToHash("Activated");
+
         private EcsFilterInject<Inc<ActivateViewData, Started<ActivateProcess>, Monster,
-            MonoLink<Transform>, 
-            MonoLink<SpriteRenderer>>> _activated = default;
-        
+            MonoLink<Transform>>> _activated = default;
+
         private EcsPoolInject<ParticleFx> _particleFxPool = default;
-        
+        private EcsPoolInject<SetAnimatorParameterRequest> _animRequestPool = default;
+
         private EcsCustomInject<PoolContainer> _viewsObjectPool = default;
+
 
         public void Run(IEcsSystems systems)
         {
@@ -36,10 +39,19 @@ namespace Client.Battle.View
 
                 ref ActivateViewData activateView = ref pools.Inc1.Get(entity);
                 ref Transform        transform    = ref pools.Inc4.Get(entity).Value;
-                ref SpriteRenderer   renderer     = ref pools.Inc5.Get(entity).Value;
-                
-                CreateActivationParticleFx(systems.GetWorld(), ref activateView, transform, renderer);
+
+                PlayActivateAnimation(entity);
+                //CreateActivationParticleFx(systems.GetWorld(), ref activateView, transform, renderer);
             }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void PlayActivateAnimation(int entity)
+        {
+            ref var request = ref _animRequestPool.Value.Add(entity);
+            request.Hash = ActivateAnimation;
+            request.Type = AnimatorParameterType.Bool;
+            request.BoolValue = true;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

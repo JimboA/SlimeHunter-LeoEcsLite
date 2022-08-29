@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.UI;

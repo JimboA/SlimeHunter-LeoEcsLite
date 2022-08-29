@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 
-namespace JimmboA.Plugins.Tween
+namespace JimboA.Plugins.Tween
 {
     public sealed class TweenSystem<TTweenComponent> : IEcsRunSystem where TTweenComponent : struct, ITweenComponent
     {
@@ -49,9 +49,12 @@ namespace JimmboA.Plugins.Tween
                     t = tweenSettings.EasingCurve.Evaluate(duration);
                 else
                     t = tweenSettings.Easing.Evaluate(duration);
-                
-                if(!tween.Handle(t))
-                    world.DelEntity(tweenEntity);
+
+                if (!tween.Handle(t))
+                {
+	                world.DelEntity(tweenEntity);
+	                continue;
+                }
 
                 if (duration >= 1 && direction > 0 
                     || duration == 0 && direction < 0)

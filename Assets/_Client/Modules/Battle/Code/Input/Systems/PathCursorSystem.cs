@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Client.Input;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -34,7 +34,10 @@ namespace Client.Battle.Simulation
                 ref PathCursor cursor = ref pools.Inc4.Get(entity);
 
                 if (turn.Phase == StatePhase.Complete)
+                {
                     cursor.CurrentPower = 0;
+                    cursor.CurrentPathIndex = 0;
+                }
             }
         }
 

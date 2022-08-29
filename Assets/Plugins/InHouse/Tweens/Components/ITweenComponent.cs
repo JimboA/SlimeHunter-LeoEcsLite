@@ -1,5 +1,5 @@
 ﻿
-namespace JimmboA.Plugins.Tween
+namespace JimboA.Plugins.Tween
 {
     public interface ITweenComponent
     {

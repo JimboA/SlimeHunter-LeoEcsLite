@@ -1,6 +1,6 @@
 using Leopotam.EcsLite;
 
-namespace JimmboA.Plugins.EcsProviders
+namespace JimboA.Plugins.EcsProviders
 {
     public interface IConvertToEntity
     {

@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 
-namespace JimmboA.Plugins.FrameworkExtensions
+namespace JimboA.Plugins.FrameworkExtensions
 {
     #region Interfaces
 

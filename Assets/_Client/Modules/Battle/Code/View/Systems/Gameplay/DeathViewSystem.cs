@@ -2,11 +2,11 @@ using System.Runtime.CompilerServices;
 using Client.AppData;
 using Client.Battle.Simulation;
 using Client.Battle.View.UI;
-using JimmboA.Plugins.EcsProviders;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.EcsProviders;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins.ObjectPool;
+using JimboA.Plugins.ObjectPool;
 using UnityEngine;
 
 namespace Client.Battle.View

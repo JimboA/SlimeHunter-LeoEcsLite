@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace JimmboA.Plugins.ObjectPool
+namespace JimboA.Plugins.ObjectPool
 {
     public class PoolContainer
     {

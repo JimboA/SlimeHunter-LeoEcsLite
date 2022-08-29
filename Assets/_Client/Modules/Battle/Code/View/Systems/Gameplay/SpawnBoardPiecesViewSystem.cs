@@ -1,7 +1,7 @@
 ﻿using Client.Battle.Simulation;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using JimmboA.Plugins.ObjectPool;
+using JimboA.Plugins.ObjectPool;
 
 namespace Client.Battle.View
 {
@@ -28,7 +28,7 @@ namespace Client.Battle.View
                 if (_fallingPool.Value.Has(entity))
                     pos.y += _board.Value.Rows;
                 
-                blueprint.CreateView(systems, entity, pos, _viewsPool.Value);
+                blueprint.CreateView(systems.GetWorld(), entity, pos, _viewsPool.Value);
             }
         }
     }

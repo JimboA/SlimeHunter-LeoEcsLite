@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Client.AppData;
-using JimmboA.Plugins.FrameworkExtensions;
+using JimboA.Plugins.FrameworkExtensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.ExtendedSystems;

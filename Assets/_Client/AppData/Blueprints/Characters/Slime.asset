@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: ViewLinkComponentSOProvider
   m_EditorClassIdentifier: 
   Value:
-    Prefab: {fileID: 1695956588216188677, guid: c55594bd324f1b04cbc8c398647460be, type: 3}
+    Prefab: {fileID: 4402190077510745683, guid: d7732fbabe64d084983f41412cc04d8c, type: 3}
 --- !u!114 &4036985703883451218
 MonoBehaviour:
   m_ObjectHideFlags: 0
