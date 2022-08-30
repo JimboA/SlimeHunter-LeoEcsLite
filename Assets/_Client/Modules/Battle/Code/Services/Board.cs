@@ -160,8 +160,6 @@ namespace Client.Battle.Simulation
     }
     
     public delegate bool EntityPredicate(EcsWorld world, int entity);
-
-    // TODO: this was done to avoid closure when using searching helpers. Seems dump, working on it :)
     public delegate bool EntityEqualsPredicate(EcsWorld world, int entity1, int entity2);
 
     public static class BoardExtensions
@@ -235,6 +233,46 @@ namespace Client.Battle.Simulation
 
         #endregion
 
+        #region Area helpers
+
+        public static void GetSquare(this IBoard board, int2 center, int radius, FastList<int2> positions)
+        {
+            for (int row = center.y - radius; row <= center.y + radius; row++)
+            {
+                if (row < 0 || row > board.Rows - 1)
+                    continue;
+
+                for (int column = center.x - radius; column <= center.x + radius; column++)
+                {
+                    if (column < 0 || column > board.Columns - 1)
+                        continue;
+
+                    positions.Add(new int2(column, row));
+                }
+            }
+        }
+        
+        public static void GetCross(this IBoard board, int2 center, int radius, FastList<int2> positions)
+        {
+            for (int row = center.y - radius; row <= center.y + radius; row++)
+            {
+                if (row < 0 || row > board.Rows - 1)
+                    continue;
+
+                positions.Add(new int2(center.x, row));
+            }
+            
+            for (int column = center.x - radius; column <= center.x + radius; column++)
+            {
+                if (column < 0 || column > board.Columns - 1)
+                    continue;
+
+                positions.Add(new int2(column, center.y));
+            }
+        }
+
+        #endregion
+        
         #region Find target templates
 
         public static void FindTargetFull(this IBoard board, int2 center, FastList<int2> founded, EntityPredicate check,
@@ -280,12 +318,12 @@ namespace Client.Battle.Simulation
             for (int row = cell.Position.y - radius; row <= cell.Position.y + radius; row++)
             {
                 if (row < 0 || row > board.Rows - 1)
-                    break;
+                    continue;
 
                 for (int column = cell.Position.x - radius; column <= cell.Position.x + radius; column++)
                 {
                     if (column < 0 || column > board.Columns - 1)
-                        break;
+                        continue;
 
                     ref var targetCell = ref board.GetCellDataFromPosition(new int2(column, row));
                     if (targetCell.Target.Unpack(board.World, out var targetEntity) 
@@ -306,12 +344,12 @@ namespace Client.Battle.Simulation
             for (int row = cell.Position.y - radius; row <= cell.Position.y + radius; row++)
             {
                 if (row < 0 || row > board.Rows - 1)
-                    break;
+                    continue;
 
                 for (int column = cell.Position.x - radius; column <= cell.Position.x + radius; column++)
                 {
                     if (column < 0 || column > board.Columns - 1)
-                        break;
+                        continue;
 
                     ref var targetCell = ref board.GetCellDataFromPosition(new int2(column, row));
                     if (targetCell.Target.Unpack(board.World, out var targetEntity) 
@@ -332,7 +370,7 @@ namespace Client.Battle.Simulation
             for (int row = cell.Position.y - radius; row <= cell.Position.y + radius; row++)
             {
                 if (row < 0 || row > board.Rows - 1)
-                    break;
+                    continue;
 
                 ref var targetCell = ref board.GetCellDataFromPosition(new int2(cell.Position.x, row));
                 if (targetCell.Target.Unpack(board.World, out var targetEntity) 
@@ -350,7 +388,7 @@ namespace Client.Battle.Simulation
             for (int column = cell.Position.x - radius; column <= cell.Position.x + radius; column++)
             {
                 if (column < 0 || column > board.Columns - 1)
-                    break;
+                    continue;
 
                 ref var targetCell = ref board.GetCellDataFromPosition(new int2(column, cell.Position.y));
                 if (targetCell.Target.Unpack(board.World, out var targetEntity) 
@@ -370,7 +408,7 @@ namespace Client.Battle.Simulation
             for (int row = cell.Position.y - radius; row <= cell.Position.y + radius; row++)
             {
                 if (row < 0 || row > board.Rows - 1)
-                    break;
+                    continue;
 
                 ref var targetCell = ref board.GetCellDataFromPosition(new int2(cell.Position.x, row));
                 if (targetCell.Target.Unpack(board.World, out var targetEntity) 
@@ -388,7 +426,7 @@ namespace Client.Battle.Simulation
             for (int column = cell.Position.x - radius; column <= cell.Position.x + radius; column++)
             {
                 if (column < 0 || column > board.Columns - 1)
-                    break;
+                    continue;
                 
                 ref var targetCell = ref board.GetCellDataFromPosition(new int2(column, cell.Position.y));
                 if (targetCell.Target.Unpack(board.World, out var targetEntity) 

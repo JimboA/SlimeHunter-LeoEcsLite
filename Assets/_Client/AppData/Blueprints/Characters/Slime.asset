@@ -131,6 +131,7 @@ MonoBehaviour:
   - {fileID: -5573155036740422210}
   - {fileID: 4840164208325303220}
   - {fileID: 125922948714169973}
+  - {fileID: 4351646941442400390}
 --- !u!114 &125922948714169973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +187,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500b4af105ca79a49a9bdfb4c868b929, type: 3}
   m_Name: MonsterSOProvider
   m_EditorClassIdentifier: 
+--- !u!114 &4351646941442400390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dc26835cb8ffc4585e4c4b03d07620, type: 3}
+  m_Name: AttackRangeViewDataSOProvider
+  m_EditorClassIdentifier: 
+  Value:
+    Color: {r: 0.94509804, g: 0.09411765, b: 0.09411765, a: 1}
+    FadeDuration: 0.8
 --- !u!114 &4840164208325303220
 MonoBehaviour:
   m_ObjectHideFlags: 0

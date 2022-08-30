@@ -21,12 +21,9 @@ namespace Client.Battle.Simulation
         {
             foreach (var entity in _walkers.Value)
             {
-                if (_battle.Value.IsPlayback 
-                    && _inputReceiverPool.Value.Has(entity))
-                {
+                if (_battle.Value.IsPlayback && _inputReceiverPool.Value.Has(entity))
                     continue;
-                }
-                
+
                 ref var pools = ref _walkers.Pools;
                 
                 ref Turn         turn    = ref pools.Inc1.Get(entity);
@@ -66,6 +63,7 @@ namespace Client.Battle.Simulation
             
             ref var moveRequest = ref eventPool.RaiseGameEvent(entity,
                 new GameEventData(currentPos, path.Positions[current], GameEvents.Move));
+            
             if(_inputReceiverPool.Value.Has(entity))
                 battle.State.LogEvent(battle, entity, moveRequest.EventData, eventPool);
             

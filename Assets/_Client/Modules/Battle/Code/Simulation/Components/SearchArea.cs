@@ -17,7 +17,6 @@ namespace Client.Battle.Simulation
     {
         public int Radius;
         public AreaType AreaType;
-        //public GameType TargetType;
         public bool AllowMultiple;
     }
 }

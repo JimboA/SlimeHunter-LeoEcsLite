@@ -86,12 +86,13 @@ namespace Client.Battle
                 .DelHere<InputTouchCanceledEvent>(GlobalIdents.Worlds.EventWorldName)
 
                 // events belonging to an entity
+                .DelHere<SelectedEvent>()
+                .DelHere<UnselectedEvent>()
+                .DelHere<AddTargetRequest>()
                 .DelHere<ModelCreatedEvent>()
                 .DelHere<ViewCreatedEvent>()
                 .DelHere<AttackHitAnimationEvent>()
                 .DelHere<PlaybackEndEvent>()
-                
-                .DelHere<AddTargetRequest>()
                 .DelHere<MoveToCellRequest>()
                 .DelHere<SingleAttackRequest>()
                 .DelHere<DamageRequest>()
@@ -228,6 +229,7 @@ namespace Client.Battle
                 .AddToGroup(new PathViewSystem())
                 .AddToGroup(new PathCursorViewSystem())
                 .AddToGroup(new SetElementViewSystem())
+                .AddToGroup(new AttackRangeViewSystem())
 
                 // UI
                 .AddToGroup(new HealthWidgetSetupSystem())

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3555582862044248002}
   - component: {fileID: 4575012401280092794}
   - component: {fileID: 7181658770538741346}
+  - component: {fileID: -3955257185716821789}
   m_Layer: 0
   m_Name: CellView
   m_TagString: Untagged
@@ -97,3 +98,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldName: 
   EntityID: 
+--- !u!114 &-3955257185716821789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330976166881298854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c7344e52954bea837f40cddb5b6daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    Value: {fileID: 4575012401280092794}

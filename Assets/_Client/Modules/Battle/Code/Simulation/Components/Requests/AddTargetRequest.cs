@@ -2,8 +2,8 @@
 using Unity.IL2CPP.CompilerServices;
 
 namespace Client.Battle.Simulation
- {
-   public struct AddTargetRequest
-   {
-   }
+ { 
+     public struct AddTargetRequest 
+     {
+     }
  }

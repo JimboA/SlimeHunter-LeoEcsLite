@@ -11,7 +11,7 @@ namespace Client.Battle.Simulation
     public sealed class CheckTargetDistanceSystem : IEcsRunSystem
     {
         private EcsFilterInject<Inc<Turn, Path, GridPosition, Movable, InputReceiver>> _actors;
-        private EcsFilterInject<Inc<AddTargetRequest, GridPosition>> _targets;
+        private EcsFilterInject<Inc<SelectedEvent, GridPosition>> _targets;
         private EcsCustomInject<IBoard> _board;
         
         public void Run (IEcsSystems systems) 

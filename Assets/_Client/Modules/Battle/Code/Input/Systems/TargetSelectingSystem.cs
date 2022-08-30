@@ -27,9 +27,11 @@ namespace Client.Input
         private EcsFilterInject<Inc<InputReceiver, Turn>> _players = default;
         private EcsFilterInject<Inc<InputTouch>> _touches = GlobalIdents.Worlds.EventWorldName;
         
-        private EcsPoolInject<IsInteractable> _poolInteractable = default;
-        private EcsPoolInject<Selected> _poolSelected = default;
-        private EcsPoolInject<AddTargetRequest> _poolAddTArget = default;
+        private EcsPoolInject<IsInteractable> _interactablePool = default;
+        private EcsPoolInject<Selected> _selectedPool = default;
+        private EcsPoolInject<SelectedEvent> _selectedEventPool = default;
+        private EcsPoolInject<UnselectedEvent> _unselectedEventPool = default;
+        private EcsPoolInject<AddTargetRequest> _addTargetPool = default;
 
         private EcsCustomInject<BattleSceneData> _sceneData = default;
         private EcsCustomInject<BattleService> _context = default;
@@ -79,8 +81,9 @@ namespace Client.Input
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Select(EcsWorld world, int entity, ref InputReceiver inputReceiver)
         {
-            _poolSelected.Value.Add(entity);
-            _poolAddTArget.Value.Add(entity);
+            _selectedPool.Value.Add(entity);
+            _selectedEventPool.Value.Add(entity);
+            _addTargetPool.Value.Add(entity);
             inputReceiver.Selected = world.PackEntity(entity);
         }
 
@@ -89,7 +92,8 @@ namespace Client.Input
         {
             if (inputReceiver.Selected.Unpack(world, out int entity))
             {
-                _poolSelected.Value.Del(entity);
+                _selectedPool.Value.Del(entity);
+                _unselectedEventPool.Value.Add(entity);
                 inputReceiver.Selected = default;
             }
         }
@@ -109,7 +113,7 @@ namespace Client.Input
                 if (!provider.TryGetEntity(out entity))
                     return false;
 
-                if (_poolInteractable.Value.Has(entity))
+                if (_interactablePool.Value.Has(entity))
                     return true;
             }
 

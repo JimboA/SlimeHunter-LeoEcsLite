@@ -10,7 +10,7 @@ namespace Client.Battle.Simulation
     public sealed class CheckTargetElementSystem : IEcsRunSystem 
     {
         private EcsFilterInject<Inc<Turn, Path, Element, InputReceiver>> _actors;
-        private EcsFilterInject<Inc<AddTargetRequest, Element, GridPosition>> _targets;
+        private EcsFilterInject<Inc<SelectedEvent, Element, GridPosition>> _targets;
         private EcsCustomInject<IBoard> _board;
 
         public void Run(IEcsSystems systems)

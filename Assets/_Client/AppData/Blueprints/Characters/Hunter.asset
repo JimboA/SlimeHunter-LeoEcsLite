@@ -28,6 +28,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15786cd66473e52449b1bbddcbba8429, type: 3}
   m_Name: CanActSOProvider
   m_EditorClassIdentifier: 
+--- !u!114 &-7238521546557907462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dc26835cb8ffc4585e4c4b03d07620, type: 3}
+  m_Name: AttackRangeViewDataSOProvider
+  m_EditorClassIdentifier: 
+  Value:
+    Color: {r: 0.9433962, g: 0.09344962, b: 0.09344962, a: 1}
+    FadeDuration: 0.8
 --- !u!114 &-7064278096739335860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +176,7 @@ MonoBehaviour:
   - {fileID: 4840164208325303220}
   - {fileID: 2467355998018625212}
   - {fileID: -6631508870853140156}
+  - {fileID: -7238521546557907462}
 --- !u!114 &1056492938355932949
 MonoBehaviour:
   m_ObjectHideFlags: 0
