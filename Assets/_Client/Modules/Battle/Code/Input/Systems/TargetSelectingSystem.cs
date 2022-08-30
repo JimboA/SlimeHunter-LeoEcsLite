@@ -34,7 +34,7 @@ namespace Client.Input
         private EcsPoolInject<AddTargetRequest> _addTargetPool = default;
 
         private EcsCustomInject<BattleSceneData> _sceneData = default;
-        private EcsCustomInject<BattleService> _context = default;
+        private EcsCustomInject<BattleService> _battle = default;
 
         // local cache
         private Camera _camera;
@@ -46,12 +46,13 @@ namespace Client.Input
 
         public void Run(IEcsSystems systems)
         {
-            if(_context.Value.BlockInput || _context.Value.Phase != BattlePhase.Battle) 
+            if(_battle.Value.BlockInput || _battle.Value.Phase != BattlePhase.Battle) 
                 return;
 
             foreach (var playerEntity in _players.Value)
             {
                 ref var pools = ref _players.Pools;
+                
                 ref Turn turn = ref pools.Inc2.Get(playerEntity);
                 if(turn.Phase != StatePhase.OnStart)
                     return;
