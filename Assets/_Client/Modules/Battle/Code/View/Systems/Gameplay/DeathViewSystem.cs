@@ -26,6 +26,8 @@ namespace Client.Battle.View
         private EcsFilterInject<Inc<DeathViewData, Executing<DyingProcess>, AttackHitAnimationEvent, MonoLink<Transform>>> _killed = default;
         
         private EcsPoolInject<Shake> _shakePool = default;
+        private EcsPoolInject<ParticleFx> _particleFxPool = default;
+        private EcsPoolInject<Element> _elementPool = default;
         private EcsPoolInject<UpdateWidgetRequest<PlayerHpWidget, int>> _widgetUpdatePool = default;
         private EcsPoolInject<KillViewRequest> _killViewPool = default;
 
@@ -53,7 +55,7 @@ namespace Client.Battle.View
                 ref Transform               transform   = ref pools.Inc4.Get(entity).Value;
                 
                 _battle.Value.UnpauseProcess(processLink.ProcessEntity);
-                CreateDeathParticles(world, ref deathView, transform.position, objectPool);
+                CreateDeathParticles(world, entity, ref deathView, transform.position, objectPool);
                 ShakeCamera(ref deathView);
                 UpdateHealthWidget(entity, 0);
                 _killViewPool.Value.Add(entity).pooled = true;
@@ -61,9 +63,18 @@ namespace Client.Battle.View
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void CreateDeathParticles(EcsWorld world, ref DeathViewData deathView, Vector3 position, PoolContainer objectPool)
+        private void CreateDeathParticles(EcsWorld world, int entity, ref DeathViewData deathView, Vector3 position, PoolContainer objectPool)
         {
-            world.CreateView(deathView.Fx, position, Quaternion.identity, objectPool);
+            var viewProvider = world.CreateView(deathView.Fx, position, Quaternion.identity, objectPool);
+            // temp. until there are no actual visual effects
+            if (viewProvider.TryGetEntity(out var fxEntity) 
+                && _particleFxPool.Value.TryGet(fxEntity, out var particleFx)
+                && _elementPool.Value.TryGet(entity, out var element))
+            {
+                var color = element.GetElementColor();
+                var main = particleFx.ParticleSystem.main;
+                main.startColor = color;
+            }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

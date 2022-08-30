@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     Color: {r: 0.94509804, g: 0.09411765, b: 0.09411765, a: 1}
-    FadeDuration: 0.8
+    FadeDuration: 0.5
 --- !u!114 &4840164208325303220
 MonoBehaviour:
   m_ObjectHideFlags: 0

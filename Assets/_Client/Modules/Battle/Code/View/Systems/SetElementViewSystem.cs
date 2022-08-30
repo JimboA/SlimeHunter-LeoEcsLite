@@ -70,30 +70,7 @@ namespace Client.Battle.View
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void SetElementColor(SpriteRenderer renderer, in Element element)
         {
-            switch (element.Type)
-            {
-                case Elements.None:
-                    break;
-                case Elements.Fire:
-                    renderer.color = Color.red;
-                    break;
-                case Elements.Water:
-                    renderer.color = Color.blue;
-                    break;
-                case Elements.Ice:
-                    renderer.color = Color.cyan;
-                    break;
-                case Elements.Electric:
-                    renderer.color = Color.yellow;
-                    break;
-                case Elements.Earth:
-                    renderer.color = Color.green;
-                    break;
-                case Elements.All:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(element), element, null);
-            }
+            renderer.color = element.GetElementColor();
         }
     }
 }
