@@ -18,11 +18,10 @@ namespace Client.Battle.Simulation
         {
             foreach (var entity in _damaged.Value)
             {
-                var hpPool = _damaged.Pools.Inc1;
-                var damagePool = _damaged.Pools.Inc2;
+                ref var pools = ref _damaged.Pools;
 
-                ref Health        hp     = ref hpPool.Get(entity);
-                ref DamageRequest damage = ref damagePool.Get(entity);
+                ref Health        hp     = ref pools.Inc1.Get(entity);
+                ref DamageRequest damage = ref pools.Inc2.Get(entity);
                 
                 hp.Value -= damage.Value;
                 if (hp.Value > 0)
@@ -32,7 +31,7 @@ namespace Client.Battle.Simulation
                 }
                 
                 hp.Value = 0;
-                _killPool.Value.Add(entity).Source = damage.Source; 
+                AddKillRequest(entity, in damage);
             }
         }
 
@@ -41,6 +40,12 @@ namespace Client.Battle.Simulation
         {
             ref var damaged = ref _context.Value.StartNewProcess(_damagedPool.Value, entity);
             damaged.Source = source;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void AddKillRequest(int entity, in DamageRequest damage)
+        {
+            _killPool.Value.Add(entity).Source = damage.Source; 
         }
     }
 }
