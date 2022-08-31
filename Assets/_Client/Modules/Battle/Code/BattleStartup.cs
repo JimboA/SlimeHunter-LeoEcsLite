@@ -239,6 +239,8 @@ namespace Client.Battle
                 .DelHere<UpdateWidgetRequest<KillScoreWidget, int>>(_world)
                 .AddToGroup(new UpdateWidgetSystem<OnBoardHpWidget, int>())
                 .DelHere<UpdateWidgetRequest<OnBoardHpWidget, int>>(_world)
+                .AddToGroup(new UpdateWidgetSystem<PathCursorWidget, int>())
+                .DelHere<UpdateWidgetRequest<PathCursorWidget, int>>(_world)
                 .AddToGroup(new ShowScreenSystem())
                 .AddToGroup(new HideScreensSystem())
                 

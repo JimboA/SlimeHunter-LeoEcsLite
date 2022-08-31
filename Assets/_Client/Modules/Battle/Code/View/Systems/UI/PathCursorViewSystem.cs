@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Client.AppData;
 using Client.Battle.Simulation;
+using Client.Battle.View.UI;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using JimboA.Plugins.Tween;
@@ -20,7 +21,6 @@ namespace Client.Battle.View
     
     public sealed class PathCursorViewSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<BattleStateChangedEvent>> _onBattleStateChanged = "Events";
         private EcsFilterInject<Inc<Path, PathCursor, PathCursorViewData, GridPosition,
             MonoLink<Transform>, ViewCreatedEvent>> _createdCursorOwners = default;
         private EcsFilterInject<Inc<
@@ -30,6 +30,8 @@ namespace Client.Battle.View
             PathCursor,
             PathCursorViewData,
             GridPosition>> _onPathChanged = default;
+        
+        private EcsPoolInject<UpdateWidgetRequest<PathCursorWidget, int>> _widgetUpdatePool = default;
 
         private EcsCustomInject<IBoard> _board = default;
 
@@ -37,6 +39,7 @@ namespace Client.Battle.View
         {
             foreach (var entity in _createdCursorOwners.Value)
             {
+                var world = systems.GetWorld();
                 ref var pools = ref _createdCursorOwners.Pools;
 
                 ref Path               path       = ref pools.Inc1.Get(entity);
@@ -47,6 +50,12 @@ namespace Client.Battle.View
                 if (cursorView.CursorObj == null)
                 {
                     cursorView.CursorObj = GameObject.Instantiate(cursorView.CursorPrefab, transform.position, transform.rotation);
+                    var widget = cursorView.CursorObj.GetComponent<PathCursorWidget>();
+                    if (widget != null)
+                    {
+                        widget.BindWidget(world, entity);
+                        widget.OnInit(cursor.CurrentPower, world);
+                    }
                 }
 
                 if(cursor.CurrentPathIndex < 0)
@@ -72,7 +81,7 @@ namespace Client.Battle.View
                         continue;
                     }
 
-                    SetCursorToPathLastPosition(in cursor, in cursorView, in path, systems.GetWorld());
+                    SetCursorToPathLastPosition(entity, in cursor, in cursorView, in path, systems.GetWorld());
                 }
                 else
                 {
@@ -90,7 +99,7 @@ namespace Client.Battle.View
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void SetCursorToPathLastPosition(in PathCursor cursor, in PathCursorViewData cursorView, in Path path, EcsWorld world)
+        private void SetCursorToPathLastPosition(int ownerEntity, in PathCursor cursor, in PathCursorViewData cursorView, in Path path, EcsWorld world)
         {
             if (cursor.CurrentPathIndex >= 0)
             {
@@ -104,7 +113,15 @@ namespace Client.Battle.View
                     
                 ref var lastCell = ref _board.Value.GetCellDataFromPosition(path.Positions[cursor.CurrentPathIndex]);
                 cursorView.CursorObj.transform.position = lastCell.WorldPosition;
+                UpdatePowerWidget(ownerEntity, cursor.CurrentPower);
             }
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void UpdatePowerWidget(int entity, int power)
+        {
+            ref var request = ref _widgetUpdatePool.Value.Add(entity);
+            request.Value = power;
         }
     }
 }
