@@ -91,18 +91,18 @@ Shader "SlimeHunter/WavesBar"
                 float halfSize = minScale/2 - margin;
 
                 #if _SHAPE_CIRCLE
-                float healthBarSDF = CircleSDF(q, halfSize);
+                float barSDF = CircleSDF(q, halfSize);
                 #endif
 
                 #if _SHAPE_BOX
-                float healthBarSDF = BoxSDF(q, halfSize);
+                float barSDF = BoxSDF(q, halfSize);
                 #endif
 
                 #if _SHAPE_RHOMBUS
-                float healthBarSDF = RhombusSDF(q, float2(halfSize, halfSize));
+                float barSDF = RhombusSDF(q, float2(halfSize, halfSize));
                 #endif
 
-                float healthBarMask = GetSmoothMask(healthBarSDF);
+                float healthBarMask = GetSmoothMask(barSDF);
 
                 // LIQUID/FILLER
                 // min(sin) term is used to decrease effect of wave near 0 and 1 healthNormalized.
@@ -111,19 +111,19 @@ Shader "SlimeHunter/WavesBar"
                 float borderNormalizedY = _borderWidth;
                 float fillOffset = marginNormalizedY + borderNormalizedY;
 
-                float healthMapped = lerp(fillOffset -0.01f, 1 - fillOffset, _valueNormalized);
-                float fillSDF = IN.uv.y - healthMapped + waveOffset;
+                float mapped = lerp(fillOffset -0.01f, 1 - fillOffset, _valueNormalized);
+                float fillSDF = IN.uv.y - mapped + waveOffset;
                 float fillMask = GetSmoothMask(fillSDF);
 
                 // BORDER 
-                float borderSDF = healthBarSDF + _borderWidth*_objectScale.y;
+                float borderSDF = barSDF + _borderWidth*_objectScale.y;
                 float borderMask =  1 - GetSmoothMask(borderSDF);
 
                 // Get final color by combining masks
                 float4 outColor = healthBarMask * (fillMask * (1 - borderMask) * _fillColor + (1 - fillMask) * (1 - borderMask) * _backgroundColor + borderMask * _borderColor);
                 
                 // Highlight center
-                outColor *= float4(2 - healthBarSDF/(minScale/2).xxx, 1);
+                outColor *= float4(2 - barSDF/(minScale/2).xxx, 1);
                 return outColor;
             }
             ENDHLSL

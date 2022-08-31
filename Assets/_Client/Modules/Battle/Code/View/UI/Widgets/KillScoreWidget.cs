@@ -80,9 +80,7 @@ namespace Client.Battle.View.UI
             _matInstance.SetFloat("_waveAmp", _fillWaveAmplitude);
             _matInstance.SetFloat("_waveFreq", _fillWaveFrequency);
             _matInstance.SetFloat("_waveSpeed", _fillWaveSpeed);
-
             _matInstance.SetColor("_fillColor", _lowToHighTransition.Evaluate(_valueNormalized));
-
             _matInstance.SetColor("_backgroundColor", _backgroundColor);
             _matInstance.SetFloat("_borderWidth", _borderWidth);
             _matInstance.SetColor("_borderColor", _borderColor);
