@@ -8,3 +8,6 @@ Web build to play: [Itch.io](https://jimboa.itch.io/slime-hunter-leoecslite)
 > **Note!** Project in progress. Tends to change.
 
 Documentation will be added soon :)
+
+Screenshots:
+![alt text](https://github.com/JimboA/SlimeHunter-LeoEcsLite/Screenshot_1.png?raw=true)
