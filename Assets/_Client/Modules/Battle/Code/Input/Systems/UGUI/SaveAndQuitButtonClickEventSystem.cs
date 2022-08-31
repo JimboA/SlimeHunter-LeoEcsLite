@@ -7,7 +7,7 @@ using UnityEngine.Scripting;
 namespace Client.Input.Ugui
 {
     // TODO: for tests
-    public sealed class SaveButtonClickEventSystem : EcsUguiCallbackSystem
+    public sealed class SaveAndQuitButtonClickEventSystem : EcsUguiCallbackSystem
     {
         private EcsCustomInject<BattleService> _context = default;
         private EcsCustomInject<IBoard> _board = default;
@@ -20,7 +20,7 @@ namespace Client.Input.Ugui
             if(battle.BlockInput)
                 return;
             
-            battle.SaveState(_board.Value, battle.World);
+            //battle.SaveState(_board.Value, battle.World);
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else

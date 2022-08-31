@@ -244,7 +244,7 @@ namespace Client.Battle
                 
                 // ugui events callbacks
                 .AddToGroup(new GoButtonClickEventSystem())
-                .AddToGroup(new SaveButtonClickEventSystem())
+                .AddToGroup(new SaveAndQuitButtonClickEventSystem())
                 .AddToGroup(new RetryButtonClickEventSystem())
 
                 // common view

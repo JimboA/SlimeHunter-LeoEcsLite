@@ -14,7 +14,7 @@ namespace Client.Battle.View.UI
 
         public void OnInit(int amount, EcsWorld world)
         {
-            requiredValue.text = "/ " + amount;
+            requiredValue.text = "/" + amount;
         }
         
         public void OnUpdate(int amount, EcsWorld world)
