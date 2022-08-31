@@ -33,17 +33,15 @@ namespace Client.Battle.View.UI
         [SerializeField, Range(0, 0.15f)] private float _borderWidth;
         [SerializeField] private Color _borderColor;
 
-        [SerializeField] private TextMeshProUGUI scoreValue;
-        [SerializeField] private TextMeshProUGUI requiredValue;
+        [SerializeField] private TextMeshProUGUI _scoreValueText;
+        [SerializeField] private TextMeshProUGUI _requiredValueText;
         
         private Material _matInstance;
-
-
         private int _requiredValue;
 
         public void OnInit(int amount, EcsWorld world)
         { 
-            requiredValue.text = "/" + amount;
+            _requiredValueText.text = "/" + amount;
             _requiredValue = amount;
             _matInstance = GetComponent<Renderer>().material;
             SetMaterialData();
@@ -52,8 +50,8 @@ namespace Client.Battle.View.UI
         
         public void OnUpdate(int amount, EcsWorld world)
         {
-            scoreValue.text = amount.ToString();
-            var tr = scoreValue.transform;
+            _scoreValueText.text = amount.ToString();
+            var tr = _scoreValueText.transform;
             tr.DoScale(world, Vector3.one, tr.localScale * 1.2f, 0.2f).Loops(2, true);
             SetValue(amount);
         }
