@@ -7,7 +7,7 @@ using Leopotam.EcsLite.Di;
 
 namespace Client.Battle.View.UI
 {
-    public sealed class BattleUIInitSystem : IEcsInitSystem
+    public sealed class BattleScreenInitSystem : IEcsInitSystem
     {
         private EcsFilterInject<Inc<Player, Health, Score>> _players = default;
         

@@ -201,7 +201,7 @@ namespace Client.Battle
 
                 //---Initialization------------------------------------------------------
                 .AddToGroup(new CameraSetupSystem())
-                .AddToGroup(new BattleUIInitSystem())
+                .AddToGroup(new BattleScreenInitSystem())
 
                 //---Update--------------------------------------------------------------
 
