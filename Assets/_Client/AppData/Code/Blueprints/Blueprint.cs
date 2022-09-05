@@ -12,8 +12,8 @@ namespace Client.AppData.Blueprints
     [CreateAssetMenu(menuName = "Game/Blueprints/CreateNew", fileName = "NewBlueprint")]
     public class Blueprint : ScriptableObject, IModelFactory, IViewFactory
     {
-        [SerializeReference] public List<ComponentProviderBase> modelComponents;
-        [SerializeReference] public List<ComponentProviderBase> viewComponents;
+        [SerializeReference] public List<ComponentProviderBase> ModelComponents;
+        [SerializeReference] public List<ComponentProviderBase> ViewComponents;
 
         public int CreateModel(EcsWorld world)
         {
