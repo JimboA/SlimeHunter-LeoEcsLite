@@ -14,7 +14,10 @@ namespace JimboA.Plugins.Tween
         public bool Handle(float t)
         {
             if (Transform == null)
+            {
+                TweenExtensions.WarningTweenNoSource(this);
                 return false;
+            }
 
             Vector3 from;
             if (From.HasValue)

@@ -13,7 +13,10 @@ namespace JimboA.Plugins.Tween
         public bool Handle(float t)
         {
             if (Transform == null)
+            {
+                TweenExtensions.WarningTweenNoSource(this);
                 return false;
+            }
 
             Transform.localScale = Vector3.LerpUnclamped(From, To, t);
             return true;

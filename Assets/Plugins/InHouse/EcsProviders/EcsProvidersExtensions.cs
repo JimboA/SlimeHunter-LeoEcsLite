@@ -42,11 +42,11 @@ namespace JimboA.Plugins.EcsProviders
             else
                 obj = Object.Instantiate(prefab, position, rotation, parent);
             
-            var actor = obj.GetComponent<EntityProvider>();
-            DebugNoProvider(obj, actor);
-            if(!actor.Bootstrap(world, entity))
+            var provider = obj.GetComponent<EntityProvider>();
+            DebugNoProvider(obj, provider);
+            if(!provider.Bootstrap(world, entity))
                 world.DelEntity(entity);
-            return actor;
+            return provider;
         }
         
         public static EntityProvider CreatViewForEntity(this EcsWorld world, int entity, GameObject prefab,
@@ -58,10 +58,10 @@ namespace JimboA.Plugins.EcsProviders
             else
                 obj = Object.Instantiate(prefab, position, rotation, parent);
             
-            var actor = obj.GetComponent<EntityProvider>();
-            DebugNoProvider(obj, actor);
-            actor.Bootstrap(world, entity);
-            return actor;
+            var provider = obj.GetComponent<EntityProvider>();
+            DebugNoProvider(obj, provider);
+            provider.Bootstrap(world, entity);
+            return provider;
         }
 
         #endregion

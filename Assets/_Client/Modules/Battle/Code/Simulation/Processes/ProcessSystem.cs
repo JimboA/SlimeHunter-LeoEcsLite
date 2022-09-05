@@ -74,11 +74,13 @@ namespace Client.Battle.Simulation
 
         #region Debug
 
+#if UNITY_EDITOR
         [Conditional("DEBUG")]
         private void DebugNoTarget(int processEntity)
         {
             throw new Exception($"Target entity from process {typeof(TProcess).Name} is missing. ProcessEntity: {processEntity}. ");
         }
+#endif
 
         #endregion
     }

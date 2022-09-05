@@ -13,7 +13,10 @@ namespace JimboA.Plugins.Tween
         public bool Handle(float t)
         {
             if (Renderer == null)
+            {
+                TweenExtensions.WarningTweenNoSource(this);
                 return false;
+            }
             
             Color from;
             if (From.HasValue)

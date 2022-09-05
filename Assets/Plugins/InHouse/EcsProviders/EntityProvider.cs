@@ -18,13 +18,7 @@ namespace JimboA.Plugins.EcsProviders
         private bool _isInitialized;
 
         public EcsWorld GetWorld => World;
-        public int? TryGetEntity()
-        {
-            if (World != null && Entity.Unpack(World, out var entity))
-                return entity;
-
-            return null;
-        }
+        
         public bool TryGetEntity(out int entity)
         {
             entity = -1;
@@ -102,6 +96,7 @@ namespace JimboA.Plugins.EcsProviders
 
         #region Debug
 
+#if UNITY_EDITOR
         [Conditional("DEBUG")]
         private void DebugNoWorld(EcsWorld world)
         {
@@ -111,6 +106,7 @@ namespace JimboA.Plugins.EcsProviders
                 throw new NullReferenceException();
             }
         }
+#endif
 
         #endregion
     }

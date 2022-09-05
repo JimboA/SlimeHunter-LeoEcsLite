@@ -20,7 +20,7 @@ namespace Client.Input.Ugui
             if(battle.BlockInput)
                 return;
             
-            //battle.SaveState(_board.Value, battle.World);
+            battle.SaveState(_board.Value, battle.World);
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else

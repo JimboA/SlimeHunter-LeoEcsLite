@@ -1,8 +1,10 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace JimboA.Plugins.Tween
 {
@@ -229,5 +231,17 @@ namespace JimboA.Plugins.Tween
 			if (t < 0.5) return InBounce(t * 2) / 2;
 			return 1 - InBounce((1 - t) * 2) / 2;
 		}
+
+		#region Debug
+
+#if UNITY_EDITOR
+	    [Conditional("DEBUG")]
+	    public static void WarningTweenNoSource(ITweenComponent tween)
+	    {
+		    Debug.LogWarning($"Source object of {tween.GetType().Name} is null");
+	    }
+#endif
+
+		#endregion
     }
 }
