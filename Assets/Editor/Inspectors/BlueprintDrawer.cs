@@ -33,18 +33,18 @@ namespace Client.CustomEditors.Inspectors
             _searchProvider = ScriptableObject.CreateInstance<SearchComponentProvidersProvider>();
             _searchProvider.Construct(_componentTypesCache);
 
-            _modelComponentsProp = serializedObject.FindProperty("modelComponents");
-            _viewComponentsProp = serializedObject.FindProperty("viewComponents");
+            _modelComponentsProp = serializedObject.FindProperty("ModelComponents");
+            _viewComponentsProp = serializedObject.FindProperty("ViewComponents");
             _modelList = new ReorderableList(serializedObject, _modelComponentsProp, true, true, true, true);
             _viewList = new ReorderableList(serializedObject, _viewComponentsProp, true, true, true, true);
             
-            _modelList.drawHeaderCallback = (Rect rect) => { EditorGUI.LabelField(rect, "modelComponents"); };
+            _modelList.drawHeaderCallback = (Rect rect) => { EditorGUI.LabelField(rect, "ModelComponents"); };
             _modelList.drawElementCallback = DrawModelElement;
             _modelList.elementHeightCallback = GetModelElementHeight;
             _modelList.onAddCallback = AddElement;
             _modelList.onRemoveCallback = RemoveElement;
             
-            _viewList.drawHeaderCallback = (Rect rect) => { EditorGUI.LabelField(rect, "viewComponents"); };
+            _viewList.drawHeaderCallback = (Rect rect) => { EditorGUI.LabelField(rect, "ViewComponents"); };
             _viewList.drawElementCallback = DrawViewElement;
             _viewList.elementHeightCallback = GetViewElementHeight;
             _viewList.onAddCallback = AddElement;
