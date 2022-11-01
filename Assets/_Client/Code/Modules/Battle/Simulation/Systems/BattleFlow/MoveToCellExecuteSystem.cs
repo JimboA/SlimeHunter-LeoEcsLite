@@ -50,8 +50,8 @@ namespace Client.Battle.Simulation
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void StartMoveProcess(int entity, int2 cellPosition)
         {
-            ref var moved = ref _battle.Value.StartNewProcess(_movedPool.Value, entity);
-            moved.CellPosition = cellPosition;
+            ref var moveProcess = ref _battle.Value.StartNewProcess(_movedPool.Value, entity);
+            moveProcess.CellPosition = cellPosition;
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Client.Battle.Simulation
                     }
 
                     int power = cursor.CurrentPower > 0 ? cursor.CurrentPower : 1;
-                    var isMovable = _boardHelpers.Value.IsMovable(targetGridPos.Position, in movable, actorEntity,
+                    var isMovable = _boardHelpers.Value.IsMovementPossible(targetGridPos.Position, in movable, actorEntity,
                         element.Type, power);
                     
                     if (_board.Value.IsReachable(lastPos, targetGridPos.Position, in movable)

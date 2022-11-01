@@ -40,7 +40,7 @@ namespace Client.Battle.Simulation
                 return;
 
             SortCharacters();
-            if (!NextTurn())
+            if (!TryGoToNextTurn())
                 battle.NextPhase = BattlePhase.Collapse;
         }
 
@@ -73,7 +73,7 @@ namespace Client.Battle.Simulation
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private bool NextTurn()
+        private bool TryGoToNextTurn()
         {
             if (_awaiting.Value.TryGetFirst(out var entity))
             {

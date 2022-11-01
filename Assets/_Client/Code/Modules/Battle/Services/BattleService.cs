@@ -50,7 +50,7 @@ namespace Client.Battle.Simulation
             _saveName = $"Level{_currentLevel}BattleSave.save";
         }
     
-        public bool ChangeState()
+        public bool TryChangeState()
         {
             if (IsAnyoneActing() || !NextPhase.HasValue || NextPhase.Value == Phase)
                 return false;

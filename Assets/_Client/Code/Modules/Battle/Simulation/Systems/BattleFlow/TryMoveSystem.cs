@@ -29,16 +29,16 @@ namespace Client.Battle.Simulation
                 _elementPool.Value.TryGet(entity, out Element element);
                 _powerPool.Value.TryGet(entity, out AttackPower power);
 
-                var isMovable = _boardHelpers.Value.IsMovable(moveRequest.EventData.TargetPosition, 
+                var results = _boardHelpers.Value.IsMovementPossible(moveRequest.EventData.TargetPosition, 
                     in movable, entity, element.Type, power.CurrentValue);
 
-                if (isMovable.isMovable)
+                if (results.isMovable)
                 {
-                    if (isMovable.withAttack)
+                    if (results.withAttack)
                     {
                         SendAttackRequest(entity, in moveRequest, in power);
                     }
-                    else if (isMovable.withSwap)
+                    else if (results.withSwap)
                     {
                         moveRequest.WithSwap = true;
                     }

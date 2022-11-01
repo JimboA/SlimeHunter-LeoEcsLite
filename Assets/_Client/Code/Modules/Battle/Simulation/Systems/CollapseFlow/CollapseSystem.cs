@@ -62,8 +62,8 @@ namespace Client.Battle.Simulation
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void StartFallingProcess(int entity, int2 cellPosition)
         {
-            ref var falling = ref _battle.Value.StartNewProcess(_fallingPool.Value, entity);
-            falling.CellPosition = cellPosition;
+            ref var fallingProcess = ref _battle.Value.StartNewProcess(_fallingPool.Value, entity);
+            fallingProcess.CellPosition = cellPosition;
         }
     }
 }

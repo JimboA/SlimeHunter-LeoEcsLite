@@ -34,14 +34,14 @@ namespace Client.Battle.Simulation
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public (bool isMovable, bool withSwap, bool withAttack) IsMovable(int2 to, in Movable movable,
+        public (bool isMovable, bool withSwap, bool withAttack) IsMovementPossible(int2 to, in Movable movable,
             int entity, Elements currentElement, int currentPower)
         {
-            return IsMovable(in Board.GetCellDataFromPosition(to), in movable, entity, currentElement, currentPower);
+            return IsMovementPossible(in Board.GetCellDataFromPosition(to), in movable, entity, currentElement, currentPower);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public (bool isMovable, bool withSwap, bool withAttack) IsMovable(in Cell cellTo, in Movable movable,
+        public (bool isMovable, bool withSwap, bool withAttack) IsMovementPossible(in Cell cellTo, in Movable movable,
             int entity, Elements currentElement, int currentPower)
         {
             bool isMovable = false;

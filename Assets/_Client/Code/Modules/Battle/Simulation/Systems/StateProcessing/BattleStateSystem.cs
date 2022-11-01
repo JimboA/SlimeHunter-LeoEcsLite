@@ -21,7 +21,7 @@ namespace Client.Battle.Simulation
         public void Run(IEcsSystems systems)
         {
             var battle = _battle.Value;
-            if (battle.ChangeState()) 
+            if (battle.TryChangeState()) 
                 StateChanged(battle);
         }
         

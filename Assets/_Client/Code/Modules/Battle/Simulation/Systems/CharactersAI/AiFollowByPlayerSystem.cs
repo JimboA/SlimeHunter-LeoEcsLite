@@ -98,7 +98,7 @@ namespace Client.Battle.Simulation
             {
                 walkableArray[i] = false;
                 ref var targetCell = ref board.GetCellDataFromIndex(i);
-                var isMovable = boardHelpers.IsMovable(in targetCell, in movable, walkerEntity, element.Type, currentPower);
+                var isMovable = boardHelpers.IsMovementPossible(in targetCell, in movable, walkerEntity, element.Type, currentPower);
                 walkableArray[i] = isMovable.isMovable;
             }
 
